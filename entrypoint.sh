@@ -3,7 +3,7 @@ set -e
 
 file_name=$1
 tag_version=$2
-echo "\nInput file name: $file_name : $tag_version"
+echo "Input file name: $file_name : $tag_version"
 
 echo "Git Head Ref: ${GITHUB_HEAD_REF}"
 echo "Git Base Ref: ${GITHUB_BASE_REF}"
@@ -37,14 +37,13 @@ extract_string=$(echo $content | awk '/^([[:space:]])*(v|ver|version|V|VER|VERSI
 echo "Extracted string: $extract_string"
 
 if [[ "$extract_string" == "" ]]; then 
-    echo "\nInvalid version string"
+    echo "Invalid version string"
     exit 0
 else
-    echo "\nValid version string found"
+    echo "Valid version string found"
 fi
 
 major=$(echo $extract_string | cut -d'.' -f1) 
-major=${major:(-2)}
 minor=$(echo $extract_string | cut -d'.' -f2)
 patch=$(echo $extract_string | cut -d'.' -f3)
 build=$(echo $extract_string | cut -d'.' -f4)
@@ -59,8 +58,8 @@ else
     newver=$(echo $major.$minor.$patch.$build)
 fi
 
-echo "\nOld Ver: $oldver"
-echo "\nUpdated version: $newver" 
+echo "Old Ver: $oldver"
+echo "Updated version: $newver" 
 
 newcontent=$(echo ${content/$oldver/$newver})
 echo $newcontent > $file_name
