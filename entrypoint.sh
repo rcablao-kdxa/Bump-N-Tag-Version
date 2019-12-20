@@ -50,7 +50,7 @@ build=$(echo $extract_string | cut -d'.' -f4)
 
 echo "Got parts" 
 
-if [[ $build = "" ]]; then
+if [[ "$build" = "" ]]; then
     oldver=$(echo $major.$minor.$patch)
     patch=$(expr $patch + 1)
     newver=$(echo $major.$minor.$patch)
