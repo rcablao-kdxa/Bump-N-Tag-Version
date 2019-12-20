@@ -3,7 +3,7 @@ set -e
 
 file_name=$1
 tag_version=$2
-echo "Input file name: $file_name : $tag_version"
+echo "Input file name: $file_name | Use Tagging:$tag_version"
 
 echo "Git Head Ref: ${GITHUB_HEAD_REF}"
 echo "Git Base Ref: ${GITHUB_BASE_REF}"
@@ -48,6 +48,8 @@ minor=$(echo $extract_string | cut -d'.' -f2)
 patch=$(echo $extract_string | cut -d'.' -f3)
 build=$(echo $extract_string | cut -d'.' -f4)
 
+echo "Got parts" 
+
 if [[ $build = "" ]]; then
     oldver=$(echo $major.$minor.$patch)
     patch=$(expr $patch + 1)
@@ -58,6 +60,7 @@ else
     newver=$(echo $major.$minor.$patch.$build)
 fi
 
+echo "Determined update" 
 echo "Old Ver: $oldver"
 echo "Updated version: $newver" 
 
