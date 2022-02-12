@@ -34,15 +34,7 @@ else
 fi
 
 echo "File Content: $content"
-extract_string=$(echo $content | awk '/^([[:space:]])*(v|ver|version|V|VER|VERSION)?([[:blank:]])*([0-9]{1,2})\.([0-9]{1,2})\.([0-9]{1,3})(\.([0-9]{1,5}))?[[:space:]]*$/{print $0}')
-echo "Extracted string: $extract_string"
-
-if [[ "$extract_string" == "" ]]; then 
-    echo "Invalid version string"
-    exit 0
-else
-    echo "Valid version string found"
-fi
+extract_string=$(echo $content)
 
 major=$(echo $extract_string | cut -d'.' -f1) 
 minor=$(echo $extract_string | cut -d'.' -f2)
