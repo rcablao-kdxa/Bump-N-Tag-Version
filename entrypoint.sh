@@ -62,7 +62,7 @@ else
 fi
 
 if [[ "$postfix" != "" ]]; then 
-    newver = $(echo $newver-$postfix)
+    newver = $(echo $newver.$postfix)
 fi
 
 echo "Determined update" 
