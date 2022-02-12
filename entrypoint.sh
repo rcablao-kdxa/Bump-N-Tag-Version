@@ -3,6 +3,7 @@ set -e
 
 file_name=$1
 tag_version=$2
+postfix=$3
 echo "Input file name: $file_name | Use Tagging:$tag_version"
 
 echo "Git Head Ref: ${GITHUB_HEAD_REF}"
@@ -58,6 +59,10 @@ else
     oldver=$(echo $major.$minor.$patch.$build)
     build=$(expr $build + 1)
     newver=$(echo $major.$minor.$patch.$build)
+fi
+
+if [[ "$postfix" != "" ]]; then 
+    newver = $(echo $newvar-$postfix)
 fi
 
 echo "Determined update" 
