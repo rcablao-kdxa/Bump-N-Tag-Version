@@ -51,15 +51,9 @@ build=$(echo $extract_string | cut -d'.' -f4)
 
 echo "Got parts" 
 
-if [[ "$build" = "" ]]; then
-    oldver=$(echo $major.$minor.$patch)
-    patch=$(expr $patch + 1)
-    newver=$(echo $major.$minor.$patch)
-else
-    oldver=$(echo $major.$minor.$patch.$build)
-    build=$(expr $build + 1)
-    newver=$(echo $major.$minor.$patch.$build)
-fi
+oldver=$(echo $major.$minor.$patch)
+patch=$(expr $patch + 1)
+newver=$(echo $major.$minor.$patch)
 
 if [[ "$postfix" != "" ]]; then 
     newver=$(echo $newver.$postfix)
