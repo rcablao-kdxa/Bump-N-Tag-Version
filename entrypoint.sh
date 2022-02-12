@@ -55,8 +55,7 @@ echo "Determined update"
 echo "Old Ver: $oldver"
 echo "Updated version: $newver" 
 
-newcontent=$(echo ${content/$oldver/$newver})
-echo $newcontent > $file_name
+echo $newver > $file_name
 
 git add -A 
 git commit -m "Incremented to ${newver}"  -m "[skip ci]"
