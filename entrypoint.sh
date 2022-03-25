@@ -66,6 +66,6 @@ echo "Git Push"
 
 git push --follow-tags "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:$github_ref
 
-
+echo "::set-output name=app_version::$newver"
 echo "\nEnd of Action\n\n"
 exit 0
